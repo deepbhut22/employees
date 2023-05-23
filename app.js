@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.set('view engine','ejs');
 app.use(Express.json());
 
-
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -18,7 +17,6 @@ const conn = mysql.createConnection({
 })
 
 //query to create database.
-
 
 // const createTableQuery = `
 //   CREATE TABLE employee_info (
@@ -66,11 +64,12 @@ conn.connect((err) => {
     });
   });
 
+
   //retriving list of employees with pagination
     app.get('/employees', (req, res) => {
     const page = 1; //page number 
     const limit = 10; // number of employees per page
-    const offset = (page - 1) * limit; // calculate offset
+    const offset = (page - 1) * limit; // calculating offset
   
     const query = `select * from employee_info limit ${limit} offset ${offset}`;
   
@@ -98,7 +97,6 @@ conn.connect((err) => {
       });
     });
   });
-
 
 
   //retriving an employee with given id
